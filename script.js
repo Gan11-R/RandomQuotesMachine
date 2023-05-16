@@ -14,7 +14,6 @@ $(document).ready(function() {
     });
 });
 
-
 function getQuote() {
     $.ajax({
         method: 'GET',
