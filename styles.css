@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap');
+
+#quote-box {
+    width: 450px;
+}
+
+body, 
+#new-quote, 
+#tweet-quote {
+    transition: background-color 0.5s ease-out;
+    border: none;
+}
+
+#new-quote {
+    font-family: 'Noto Sans', sans-serif;
+}
+
+#new-quote:hover,
+#tweet-quote:hover {
+  opacity: 0.8;
+}
