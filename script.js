@@ -1,19 +1,26 @@
 function randomColor() {
+    // list colors
     const colors = ['#16a085', '#27ae60', '#2c3e50', '#f39c12', '#e74c3c', '#9b59b6', '#FB6964', 
                   '#342224', "#472E32", "#BDBB99", "#77B1A9", "#73A857"];
+    // get random color in colors list by generate random number              
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
     return randomColor;
-  }
+}
 
 $(document).ready(function() {
+    // make event listener to click
     $('#new-quote').click(function() {
+        // call random color
         let color = randomColor()
+
+        // set the css component when button click
         $('body').css('background-color', color);
         $('#new-quote').css('background-color', color);
         $('#tweet-quote').css('background-color', color);
     });
 });
 
+// function to get quote from ninja api
 function getQuote() {
     $.ajax({
         method: 'GET',
@@ -21,11 +28,14 @@ function getQuote() {
         headers: { 'X-Api-Key': 'WeNQ4WrWeHNgmNlJSdWNsw==kdvPuz2fV5PYMF6A'},
         contentType: 'application/json',
         success: function(result) {
+            // print result for debugging
             console.log(result)
             
+            // assign data requested 
             let quote = result[0].quote;
             let author = result[0] .author;
-            // change the quote and author text
+
+            // make animation
             $("#text").fadeOut(500, function() {
                 $(this).text('"' + quote + '"');
                 $(this).fadeIn(500);
@@ -42,7 +52,9 @@ function getQuote() {
 }
 
 $(document).ready(function() {
+    // get quote after window loaded
     getQuote();
+    // get new quote after button click
     $("#new-quote").click(function() {
         getQuote();
     });
